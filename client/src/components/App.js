@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
+import jsonObj from '../../../characters.json'
+import CharacterOption from './CharacterOption'
 
-class App extends Component {
-  constructor() {
-    super()
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>WHYYYYYYY</h1>
+const App = () => {
+  return (
+    <div id="main">
+      <div className="container">
+        {
+          jsonObj.characters.map(character => {
+            return (
+              <CharacterOption
+                key={character.name}
+                name={character.name}
+                url={character.url} />
+            )
+          })
+        }
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
