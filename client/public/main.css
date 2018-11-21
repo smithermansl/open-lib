@@ -3,28 +3,66 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#main {
-  margin-top: 200px;
+#menu {
+  padding: 30px 0;
+  position: fixed;
+  width: 100vw;
 }
 
-.container {
+#menu h4 {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px 0;
+}
+
+.options {
+  width: 700px;
   margin: 0 auto;
-  width: 650px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 30px 0;
 }
 
-.container h2 {
-  font-size: 1.2em;
-  letter-spacing: .1em;
+.options h5 {
+  letter-spacing: .05em;
+  margin: 20px 0;
 }
 
 .char-option {
-  width: 250px;
-  height: 70px;
+  width: 150px;
+  height: 50px;
   background-color: #25B28F;
   color: #DCF0EB;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.char-option:hover {
+  color: #25B28F;
+  background-color: #DCF0EB;
+}
+
+#films {
+  width: 70vw;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: indianred;
+}
+
+.singleFilm {
+  width: 250px;
+  height: 450px;
+  padding: 20px;
+  background-color: lightcoral;
+  text-align: center;
+}
+
+@media screen and (max-width: 1050px) {
+  .options {
+    width: 360px;
+  }
 }

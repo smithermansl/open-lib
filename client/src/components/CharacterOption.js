@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class CharacterOption extends Component {
   constructor() {
@@ -6,18 +7,22 @@ class CharacterOption extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick (evt) {
+  async handleClick (evt, url) {
+    console.log('hello world')
     evt.preventDefault()
-    console.log(`hello from ${this.props.name}`)
+    const { updateFilms } = this.props
+    let { data } = await axios.get(`${url}`)
+    console.log('data', data)
+    updateFilms(data.films)
   }
 
   render() {
     const { name, url } = this.props
     return (
-      <div className="char-option" onClick={this.handleClick}>
-        <h2>
-          <h2>{name}</h2>
-        </h2>
+      <div
+        className="char-option"
+        onClick={e => this.handleClick(e, url)} >
+        <h5>{name}</h5>
       </div>
     )
   }
