@@ -9,9 +9,13 @@ class CharacterOption extends Component {
 
   async handleClick (evt, url) {
     evt.preventDefault()
-    const { updateFilmUrls } = this.props
-    let { data } = await axios.get(`${url}`)
-    updateFilmUrls(data.films)
+    const { updateFilmUrls, handleError } = this.props
+    try {
+      let { data } = await axios.get(`${url}`)
+      updateFilmUrls(data.films)
+    } catch (err) {
+      handleError()
+    }
   }
 
   render() {

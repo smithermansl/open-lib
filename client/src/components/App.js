@@ -9,29 +9,33 @@ export default class App extends Component {
     super()
     this.state = {
       filmUrls: [],
-      films: []
+      films: [],
+      error: false
     }
     this.updateFilmUrls = this.updateFilmUrls.bind(this)
     this.updateFilms = this.updateFilms.bind(this)
+    this.handleError = this.handleError.bind(this)
   }
 
   updateFilmUrls (filmUrls) {
-    this.setState({ filmUrls, films: [] })
+    this.setState({ filmUrls, error: false })
     this.updateFilms()
   }
 
-  updateFilms() {
+  async updateFilms() {
     const { filmUrls } = this.state
+    let films = filmUrls.map(url => axios.get(`${url}`))
+    films = await Promise.all(films)
+    this.setState({ films })
+  }
 
-    if (filmUrls.length) {
-      filmUrls.forEach(async url => {
-        let { data } = await axios.get(`${url}`)
-        this.setState({ films: [...this.state.films, data] })
-      })
-    }
+  handleError() {
+    this.setState({ films: [], error: true })
   }
 
   render() {
+    const { films, error } = this.state
+    console.log('error true? ', this.state)
     return (
       <div>
         <div id="menu">
@@ -45,17 +49,25 @@ export default class App extends Component {
                     key={character.name}
                     name={character.name}
                     url={character.url}
-                    updateFilmUrls={this.updateFilmUrls} />
+                    updateFilmUrls={this.updateFilmUrls}
+                    handleError={this.handleError} />
                 )
               })
             }
           </div>
         </div>
-        {
-          this.state.films.length ?
-          <FilmList films={this.state.films} />
-          : null
-        }
+        <div id="display">
+          {
+            films.length ?
+            <FilmList films={films} />
+            : null
+          }
+          {
+            error ?
+            <h2>Unable to fetch movie data for that character.</h2>
+            : null
+          }
+        </div>
       </div>
     )
   }
