@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import jsonObj from '../../../characters.json'
 import CharacterOption from './CharacterOption'
-import FilmList from './FilmList.js';
-import axios from 'axios';
+import FilmList from './FilmList.js'
+import axios from 'axios'
+import jsonObj from '../../../utilities/characters.json'
 
 export default class App extends Component {
   constructor() {
@@ -35,7 +35,8 @@ export default class App extends Component {
     return (
       <div>
         <div id="menu">
-          <h4>Select a Character to View the Films in which they Appear</h4>
+          <img src="/images/SW_logo.png" alt="star_wars_logo"/>
+          <p>Select a Character to View the Films in which they Appear</p>
           <div className="options">
             {
               jsonObj.characters.map(character => {

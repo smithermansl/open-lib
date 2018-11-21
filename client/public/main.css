@@ -5,18 +5,30 @@ body {
 
 #menu {
   background-color: #000;
-  padding: 30px 0 0 0;
+  padding: 10px 0 0 0;
   position: fixed;
   top: 0;
   width: 100vw;
   z-index: 5;
+  text-align: center;
 }
 
-#menu h4 {
+#menu p {
+  padding: 0 0 30px 0;
+  font-size: 14px;
+  letter-spacing: .1em;
+}
+
+#menu img {
+  width: 200px;
+  height: auto;
+}
+
+h4, h2, p {
   color: white;
   text-align: center;
   margin: 0;
-  padding: 15px 0;
+  padding: 5px 0;
 }
 
 .options {
@@ -39,6 +51,7 @@ body {
   color: #DCF0EB;
   text-align: center;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .char-option:hover {
@@ -48,21 +61,22 @@ body {
 
 #films {
   position: relative;
-  top: 150px;
+  top: 265px;
   width: 80vw;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-between;
-  background-color: indianred;
+  /* background-color: indianred; */
   padding-bottom: 50px;
 }
 
 .singleFilm {
   width: 250px;
-  height: 350px;
   margin: 0 30px 30px 30px;
-  background-color: lightcoral;
+  padding: 10px;
+  border: 2px solid #E6DD3D;
+  border-radius: 4px;
   text-align: center;
 }
 
@@ -72,13 +86,14 @@ body {
   }
 
   #films {
-    top: 250px;
+    top: 340px;
   }
 }
 
-@media screen and (max-width: 775px) {
+@media screen and (max-width: 835px) {
   #films {
     width: 50vw;
+    min-width: 300px;
   }
 
   .singleFilm {

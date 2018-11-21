@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import days from '../../../utilities/days.json'
 
 const FilmList = props => {
   const { films } = props
@@ -6,10 +7,14 @@ const FilmList = props => {
     <div id="films">
       {
         films.map(film => {
-          const { title } = film
+          let { title, episode_id, release_date } = film
+          release_date = new Date(release_date.replace(/-/g, ' ')).toDateString()
+          let key = release_date.slice(0, 3), formattedDate = days[key].concat(release_date.slice(4))
           return (
             <div key={title} className="singleFilm">
-              <p>{title}</p>
+              <h4>{`Episode ${episode_id}`}</h4>
+              <h2>{title}</h2>
+              <p>{formattedDate}</p>
             </div>
           )
         })
