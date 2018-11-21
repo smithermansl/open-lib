@@ -4,9 +4,12 @@ body {
 }
 
 #menu {
-  padding: 30px 0;
+  background-color: #000;
+  padding: 30px 0 0 0;
   position: fixed;
+  top: 0;
   width: 100vw;
+  z-index: 5;
 }
 
 #menu h4 {
@@ -22,7 +25,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 30px 0;
 }
 
 .options h5 {
@@ -45,18 +47,21 @@ body {
 }
 
 #films {
-  width: 70vw;
+  position: relative;
+  top: 150px;
+  width: 80vw;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
   justify-content: space-between;
   background-color: indianred;
+  padding-bottom: 50px;
 }
 
 .singleFilm {
   width: 250px;
-  height: 450px;
-  padding: 20px;
+  height: 350px;
+  margin: 0 30px 30px 30px;
   background-color: lightcoral;
   text-align: center;
 }
@@ -64,5 +69,19 @@ body {
 @media screen and (max-width: 1050px) {
   .options {
     width: 360px;
+  }
+
+  #films {
+    top: 250px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  #films {
+    width: 50vw;
+  }
+
+  .singleFilm {
+    margin: 0 auto 30px auto;
   }
 }

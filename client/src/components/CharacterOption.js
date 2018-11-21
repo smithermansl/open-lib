@@ -8,12 +8,10 @@ class CharacterOption extends Component {
   }
 
   async handleClick (evt, url) {
-    console.log('hello world')
     evt.preventDefault()
-    const { updateFilms } = this.props
+    const { updateFilmUrls } = this.props
     let { data } = await axios.get(`${url}`)
-    console.log('data', data)
-    updateFilms(data.films)
+    updateFilmUrls(data.films)
   }
 
   render() {

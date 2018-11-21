@@ -6,9 +6,10 @@ const FilmList = props => {
     <div id="films">
       {
         films.map(film => {
+          const { title } = film
           return (
-            <div class="singleFilm">
-              <p>Hiii</p>
+            <div key={title} className="singleFilm">
+              <p>{title}</p>
             </div>
           )
         })
