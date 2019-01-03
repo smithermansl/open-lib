@@ -1,14 +1,14 @@
 {
-  "name": "swapi",
+  "name": "library-challenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "Book searching and filtering application built with JavaScript, HTML, CSS, React, Redux, and Express.",
   "main": "./client/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w & nodemon server",
     "server": "nodemon ./server/index.js"
   },
-  "author": "",
+  "author": "Shelby Smitherman",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",

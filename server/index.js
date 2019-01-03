@@ -2,14 +2,13 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = process.env.PORT || 8080
-const axios = require('axios')
+const PORT = process.env.PORT || 5555
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}!`)
+  console.log(`Listening on port ${PORT}.`)
 })
 
 app.use(express.static(path.join(__dirname, '../client/public')))
