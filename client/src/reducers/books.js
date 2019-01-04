@@ -10,14 +10,11 @@ const getBooks = books => ({
   books
 })
 
-export const fetchBooks = query => {
-  return (dispatch, axios) => {
+export const fetchBooks = queryStr => {
+  return async (dispatch, getState, axios) => {
     try {
-      const { data } = axios.get(`http://openlibrary.org/search.json?${query}`)
-      // http://openlibrary.org/search.json?author=tolkien&title=the+hobbit
-
-      console.log('book data in fetchBooks thunk', data)
-      // dispatch(getBooks(data))
+      const { data } = await axios.get(`http://openlibrary.org/search.json?${queryStr}`)
+      dispatch(getBooks(data.docs))
     } catch (err) {
       console.log('Unable to find books with that search query', err)
     }
@@ -28,6 +25,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKS:
       return {...state, list: [ ...action.books ]}
+
     default:
       return state
   }
