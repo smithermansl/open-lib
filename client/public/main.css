@@ -36,7 +36,32 @@ p {
   padding-top: 2em;
 }
 
+#search {
+  width: 200px;
+  padding-top: 2em;
+}
 
+.search {
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+}
+
+#search input {
+  width: 180px;
+  margin-bottom: .5em;
+  padding-left: 8px;
+}
+
+#search select {
+  margin-right: .5em;
+  width: 150px;
+}
+
+#search button:hover {
+  background-color: #49494b;
+  color: #d1bfa7;
+}
 
 
 
