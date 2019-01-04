@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import BookResults from './BookResults'
 
 export default class App extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class App extends Component {
       <Fragment>
         <Header/>
         <Sidebar/>
+        <BookResults/>
       </Fragment>
     )
   }
