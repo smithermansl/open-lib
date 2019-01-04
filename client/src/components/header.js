@@ -4,7 +4,7 @@ import { fetchBooks } from '../reducers/books'
 
 class Header extends Component {
   constructor () {
-    super()
+    super ()
     this.state = {
       query: '',
       searchBy: ''
@@ -32,8 +32,6 @@ class Header extends Component {
   }
 
   render () {
-    const { books } = this.state
-
     return (
       <div id="header">
         <h1 id="title" className="header-content">
@@ -63,7 +61,6 @@ class Header extends Component {
             <option value="genre">by Genre</option>
           </select>
           <button
-            type="submit"
             className="search"
             onClick={this.handleSearch}>Go!</button>
         </div>
@@ -72,12 +69,8 @@ class Header extends Component {
   }
 }
 
-const mapState = state => ({
-  books: state.books.list
-})
-
 const mapDispatch = dispatch => ({
   sendQuery: queryStr => dispatch(fetchBooks(queryStr))
 })
 
-export default connect(mapState, mapDispatch)(Header)
+export default connect(null, mapDispatch)(Header)

@@ -72,6 +72,7 @@ p {
   height: 100vh;
   width: 150px;
   padding-top: 2em;
+  float: left;
 }
 
 .filter-category {
@@ -80,6 +81,13 @@ p {
 
 #sidebar h6 {
   margin: 0;
+}
+
+#results {
+  float: left;
+  width: 350px;
+  display: flex;
+  justify-content: space-around;
 }
 
 
