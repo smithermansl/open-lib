@@ -5,12 +5,16 @@ body {
   color: #49494b;
 }
 
-p {
+h6 {
   font-size: .9em;
 }
 
+p {
+  font-size: .75em;
+}
+
 #header {
-  height: 120px;
+  padding: 1em;
   background-color: #bd8c7d;
   display: flex;
   justify-content: space-around;
@@ -63,6 +67,20 @@ p {
   color: #d1bfa7;
 }
 
+#sidebar {
+  background-color: #d1bfa7;
+  height: 100vh;
+  width: 150px;
+  padding-top: 2em;
+}
+
+.filter-category {
+  padding: 1em 2em;
+}
+
+#sidebar h6 {
+  margin: 0;
+}
 
 
 /* 

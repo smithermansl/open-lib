@@ -6,5 +6,5 @@ import axios from 'axios'
 
 export default createStore(
   root,
-  applyMiddleware(loggingMiddleware, thunkMiddleware.withExtraArgument({ axios }))
+  applyMiddleware(loggingMiddleware, thunkMiddleware.withExtraArgument(axios))
 )

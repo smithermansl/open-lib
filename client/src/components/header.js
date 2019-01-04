@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchBooks } from '../reducers/books'
 
-export default class Header extends Component {
+class Header extends Component {
   constructor () {
     super()
     this.state = {
@@ -16,17 +18,31 @@ export default class Header extends Component {
     })
   }
 
+  handleSearch = e => {
+    e.preventDefault()
+    console.log('handle search fired')
+
+    let { query, searchBy } = this.state
+    query = query.toLowerCase().replace(' ', '+')
+
+    const queryStr = `${searchBy}=${query}`
+    console.log('querying string', queryStr)
+
+    this.props.sendQuery(queryStr)
+  }
+
   render () {
-    console.log('state: ', this.state)
+    const { books } = this.state
+
     return (
       <div id="header">
         <h1 id="title" className="header-content">
           Welcome, Readers!
         </h1>
   
-        <p id="about" className="header-content">
+        <h6 id="about" className="header-content">
           Find your next literary adventure using Open Library's Search API.
-        </p>
+        </h6>
   
         <div id="search" className="header-content">
           <input
@@ -46,9 +62,22 @@ export default class Header extends Component {
             <option value="author">by Author</option>
             <option value="genre">by Genre</option>
           </select>
-          <button type="submit" className="search">Go!</button>
+          <button
+            type="submit"
+            className="search"
+            onClick={this.handleSearch}>Go!</button>
         </div>
       </div>
     )
   }
 }
+
+const mapState = state => ({
+  books: state.books.list
+})
+
+const mapDispatch = dispatch => ({
+  sendQuery: queryStr => dispatch(fetchBooks(queryStr))
+})
+
+export default connect(mapState, mapDispatch)(Header)
