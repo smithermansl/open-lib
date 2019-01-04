@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #49494b;
+}
+
+p {
+  font-size: .9em;
+}
+
+#header {
+  height: 120px;
+  background-color: #bd8c7d;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-content {
+  margin: 0;
+  padding: 1em;
+}
+
+#title {
+  width: 450px;
+  font-family: 'EB Garamond', serif;
+  font-size: 3em;
+  font-weight: 600;
+  color: #FFF;
+  letter-spacing: .1em;
+  padding: .5em 0 0 0em;
+}
+
+#about {
+  width: 150px;
+  padding-top: 2em;
+}
+
+
+
+
+
+/* 
+
+Rose Gold: #bd8c7d
+Soft Gold: #d1bfa7
+Silver: #8e8e90
+Onyx: #49494b
+
+font-family: 'EB Garamond', serif;
+font-family: 'Roboto', sans-serif;
+
+*/

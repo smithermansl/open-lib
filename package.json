@@ -2,6 +2,10 @@
   "name": "library-challenge",
   "version": "1.0.0",
   "description": "Book searching and filtering application built with JavaScript, HTML, CSS, React, Redux, and Express.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smithermansl/open-lib"
+  },
   "main": "./client/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +21,10 @@
     "express": "^4.16.4",
     "path": "^0.12.7",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-loader": "^7.1.5",
