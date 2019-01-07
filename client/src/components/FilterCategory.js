@@ -1,23 +1,38 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { newLanguageFilter } from '../reducers/books'
+// import { newLanguageFilter } from '../reducers/books'
+import { addLangFilter } from '../reducers/books'
 
 class FilterCategory extends Component {
-
-  // componentDidMount to get filters from redux store
+  constructor (props) {
+    super (props)
+  }
 
   changeFilter = e => {
     e.preventDefault()
-    const { name } = props.category
+    let lang = e.target.id
+    const { addLangFilter, category, filters } = this.props, name = category.name
 
-    // switch statement, calls correct mapDispatch function
-    // based on whether e.target.value is already selected in
-    // state.filters + on the value of 'name'
+    // console.log('language code: ', lang, 'category name: ', name)
+    // console.log('filters: ', filters)
+
+    switch (name) {
+      case 'Language':
+        if (filters.languages.indexOf(lang) === -1) {
+          console.log('in the if statement')
+          addLangFilter(lang)
+        }
+        // else removeLangFilter(lang)
+
+      // case 'Genre':
+      // case 'Type':
+    }
+
   }
 
   render () {
     // name = category name / type (i.e. 'Genre')
-    const { name, options } = props.category
+    const { name, options } = this.props.category
     return (
       <div className="filter-category">
         <h6>{name}</h6>
@@ -26,8 +41,11 @@ class FilterCategory extends Component {
             return (
               <p
                 key={option.value}
-                value={option.value}
-                onClick={this.changeFilter}>{option.name}</p>
+                id={option.value}
+                className="filter-option"
+                onClick={this.changeFilter}>
+                {option.name}
+              </p>
             )
           })
         }
@@ -37,11 +55,11 @@ class FilterCategory extends Component {
 }
 
 const mapState = state => ({
-  filters: state.filters
+  filters: state.books.filters
 })
 
 const mapDispatch = dispatch => ({
-  addLangFilter: lang => dispatch(newLanguageFilter(lang))
+  addLangFilter: lang => dispatch(addLangFilter(lang))
 })
 
-export default connect(null, mapDispatch)(FilterCategory)
+export default connect(mapState, mapDispatch)(FilterCategory)

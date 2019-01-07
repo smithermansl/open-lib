@@ -17,22 +17,22 @@ class BookResults extends Component {
   }
 
   render () {
-    let { unfiltered } = this.props
+    let { filtered } = this.props
     const { currentPage } = this.state
 
     const endIdx = currentPage * 30, startIdx = endIdx - 30,
-    books = unfiltered.slice(startIdx, endIdx), numPages = Math.ceil(unfiltered.length / 30),
-    pageNumbers = []
+    books = filtered.slice(startIdx, endIdx), numPages = Math.ceil(filtered.length / 30),
+    pageNumbers = [], lastResult = books.length < 30 ? startIdx + books.length : endIdx
 
     for (let i = 1; i <= numPages; i++) {
       pageNumbers.push(i)
     }
 
-    return unfiltered.length ? 
+    return filtered.length ? 
     (
       <div id="results">
         <div id="pagination">
-          <p>Displaying {startIdx + 1} - {endIdx} of {unfiltered.length} results</p>
+          <p>Displaying {startIdx + 1} - {lastResult} of {filtered.length} results</p>
         </div>
 
         {
@@ -72,7 +72,6 @@ class BookResults extends Component {
 }
 
 const mapState = state => ({
-  unfiltered: state.books.list,
   filtered: state.books.filteredList
 })
 
