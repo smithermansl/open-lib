@@ -20,13 +20,11 @@ class Header extends Component {
 
   handleSearch = e => {
     e.preventDefault()
-    console.log('handle search fired')
 
     let { query, searchBy } = this.state
-    query = query.toLowerCase().replace(' ', '+')
+    query = query.toLowerCase().replace(/ /g, '+')
 
     const queryStr = `${searchBy}=${query}`
-    console.log('querying string', queryStr)
 
     this.props.sendQuery(queryStr)
   }
