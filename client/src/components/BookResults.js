@@ -72,7 +72,8 @@ class BookResults extends Component {
 }
 
 const mapState = state => ({
-  unfiltered: state.books.list
+  unfiltered: state.books.list,
+  filtered: state.books.filteredList
 })
 
 export default connect(mapState)(BookResults)
