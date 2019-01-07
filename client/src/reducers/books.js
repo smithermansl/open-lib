@@ -18,7 +18,7 @@ const getBooks = books => ({
   books
 })
 
-const addLangFilter = lang => ({
+export const addLangFilter = lang => ({
   type: ADD_LANG_FILTER,
   lang
 })
@@ -39,26 +39,28 @@ export const fetchBooks = queryStr => {
   }
 }
 
-export const newLanguageFilter = language => {
-  return dispatch => {
-    try {
-      dispatch(addLangFilter(language))
-    } catch (err) {
-      console.log('Unable to add new language filter', err)
-    }
-  }
-}
+// export const newLanguageFilter = language => {
+//   console.log('in add language filter thunk creator')
+//   return dispatch => {
+//     try {
+//       dispatch(addLangFilter(language))
+//     } catch (err) {
+//       console.log('Unable to add new language filter', err)
+//     }
+//   }
+// }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKS:
-      return {...state, list: [ ...action.books ]}
+      return {...state, list: [ ...action.books ], filteredList: [ ...action.books ]}
 
     case ADD_LANG_FILTER:
       return {...state,
         filters: {...state.filters,
-        languages: [...state.filters.languages, action.lang],
-        filteredList: state.filteredList.filter(book => book.language.indexOf(action.lang) > -1) }}
+          languages: [...state.filters.languages, action.lang]},
+        filteredList: state.filteredList.filter(book => book.language && book.language.indexOf(action.lang) > -1) }
+        // not all entries include a language *******
 
     default:
       return state

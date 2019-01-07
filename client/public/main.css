@@ -76,12 +76,16 @@ p {
   float: left;
 }
 
+#sidebar h6 {
+  margin: 0;
+}
+
 .filter-category {
   padding: 1em 2em;
 }
 
-#sidebar h6 {
-  margin: 0;
+.filter-option {
+  cursor: pointer;
 }
 
 #results {
