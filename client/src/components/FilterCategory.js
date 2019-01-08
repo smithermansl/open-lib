@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { newLanguageFilter } from '../reducers/books'
-import { addLangFilter } from '../reducers/books'
+import { addGenreFilter, addLangFilter, addSubjectFilter, removeLangFilter } from '../reducers/books'
 
 class FilterCategory extends Component {
   constructor (props) {
@@ -9,30 +8,39 @@ class FilterCategory extends Component {
   }
 
   changeFilter = e => {
+    console.log('change filter fired')
     e.preventDefault()
-    let lang = e.target.id
-    const { addLangFilter, category, filters } = this.props, name = category.name
+    let value = e.target.id
+    const { addGenreFilter, addLangFilter, addSubjectFilter, category, filters, removeLangFilter } = this.props, name = category.name
 
-    // console.log('language code: ', lang, 'category name: ', name)
-    // console.log('filters: ', filters)
+    console.log('name: ', name, 'value: ', value)
 
     switch (name) {
-      case 'Language':
-        if (filters.languages.indexOf(lang) === -1) {
-          console.log('in the if statement')
-          addLangFilter(lang)
+      case 'Genre':
+        if (filters.genre.indexOf(value) === -1) {
+          addGenreFilter(value)
         }
-        // else removeLangFilter(lang)
+        // else remove genre filter
+        break;
 
-      // case 'Genre':
-      // case 'Type':
+      case 'Language':
+        if (filters.language.indexOf(value) === -1) {
+          addLangFilter(value)
+        } else removeLangFilter(value)
+        break;
+
+      case 'Subject':
+        if (filters.subject.indexOf(value) === -1) {
+          addSubjectFilter(value)
+        }
+        // else remove subject filter
+        break;
     }
-
   }
 
   render () {
-    // name = category name / type (i.e. 'Genre')
-    const { name, options } = this.props.category
+    const { category, filters } = this.props, { name, options } = category
+    
     return (
       <div className="filter-category">
         <h6>{name}</h6>
@@ -42,7 +50,8 @@ class FilterCategory extends Component {
               <p
                 key={option.value}
                 id={option.value}
-                className="filter-option"
+                className={"filter-option " +
+                  (filters[name.toLowerCase()].indexOf(option.value) > -1 ? 'active' : null)}
                 onClick={this.changeFilter}>
                 {option.name}
               </p>
@@ -59,7 +68,10 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  addLangFilter: lang => dispatch(addLangFilter(lang))
+  addGenreFilter: genre => dispatch(addGenreFilter(genre)),
+  addLangFilter: lang => dispatch(addLangFilter(lang)),
+  addSubjectFilter: subject => dispatch(addSubjectFilter(subject)),
+  removeLangFilter: lang => dispatch(removeLangFilter(lang))
 })
 
 export default connect(mapState, mapDispatch)(FilterCategory)

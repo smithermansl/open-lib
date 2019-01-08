@@ -12,7 +12,7 @@ class BookResults extends Component {
   handleClick = e => {
     e.preventDefault()
     this.setState({
-      currentPage: +e.target.id // e.target.id 
+      currentPage: +e.target.id
     })
   }
 
@@ -39,7 +39,13 @@ class BookResults extends Component {
           books && books.map(book => {
             return (
               <div key={book.key} className="result">
-                {book.title}
+                <p>{book.title}</p>
+                {
+                  book.author_name ?
+                  (
+                    <p>by {book.author_name[0]}</p>
+                  ) : null
+                }
               </div>
             )
           })
@@ -48,17 +54,9 @@ class BookResults extends Component {
         <div id="pages">
           {
             pageNumbers.map(num => {
-              return num === currentPage ?
-              (
+              return (
                 <p
-                  className="page currPage"
-                  key={num}
-                  id={num}
-                  onClick={this.handleClick}>{num}</p>
-              )
-              : (
-                <p
-                  className="page"
+                  className={"page " + (num === currentPage ? "active" : null)}
                   key={num}
                   id={num}
                   onClick={this.handleClick}>{num}</p>
