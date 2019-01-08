@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 
 const BookDetails = props => {
   const { book } = props
-
-  // if (book.isbn) console.log('book isbn\n', book.isbn, 'type: \n', typeof book.isbn[0])
-  
   {
     return book.title ?
     (
