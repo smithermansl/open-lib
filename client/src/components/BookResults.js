@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { selectBook } from '../reducers/books'
 
 class BookResults extends Component {
   constructor (props) {
@@ -17,7 +18,7 @@ class BookResults extends Component {
   }
 
   render () {
-    let { filtered } = this.props
+    let { filtered, selectBook } = this.props
     const { currentPage } = this.state
 
     const endIdx = currentPage * 30, startIdx = endIdx - 30,
@@ -38,7 +39,10 @@ class BookResults extends Component {
         {
           books && books.map(book => {
             return (
-              <div key={book.key} className="result">
+              <div
+                key={book.key}
+                className="result"
+                onClick={() => selectBook(book)}>
                 <p>{book.title}</p>
                 {
                   book.author_name ?
@@ -73,4 +77,8 @@ const mapState = state => ({
   filtered: state.books.filteredList
 })
 
-export default connect(mapState)(BookResults)
+const mapDispatch = dispatch => ({
+  selectBook: book => dispatch(selectBook(book))
+})
+
+export default connect(mapState, mapDispatch)(BookResults)
