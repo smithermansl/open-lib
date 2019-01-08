@@ -9,9 +9,11 @@ export default class App extends Component {
     return (
       <Fragment>
         <Header/>
-        <Sidebar/>
-        <BookResults/>
-        <BookDetails/>
+        <div id="main">
+          <Sidebar/>
+          <BookResults/>
+          <BookDetails/>
+        </div>
       </Fragment>
     )
   }
