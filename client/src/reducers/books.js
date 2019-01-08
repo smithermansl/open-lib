@@ -1,5 +1,4 @@
 import { filterGenre, filterLanguage, filterSubject, totalFilter } from '../../../utilities/filterFunctions'
-import Axios from 'axios';
 
 const initialState = {
   list: [],
@@ -13,6 +12,7 @@ const initialState = {
 }
 
 const GET_BOOKS = 'GET_BOOKS'
+const SELECT_BOOK = 'SELECT_BOOK'
 const ADD_GEN_FILTER = 'ADD_GEN_FILTER'
 const REMOVE_GEN_FILTER = 'REMOVE_GEN_FILTER'
 const ADD_LANG_FILTER = 'ADD_LANG_FILTER'
@@ -23,6 +23,11 @@ const REMOVE_SUBJ_FILTER = 'REMOVE_SUBJ_FILTER'
 const getBooks = books => ({
   type: GET_BOOKS,
   books
+})
+
+export const selectBook = book => ({
+  type: SELECT_BOOK,
+  book
 })
 
 export const addGenreFilter = genre => ({
@@ -71,6 +76,9 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKS:
       return {...state, list: [ ...action.books ], filteredList: [ ...action.books ]}
+
+    case SELECT_BOOK:
+      return {...state, selectedBook: action.book }
 
     case ADD_GEN_FILTER:
       return {...state,

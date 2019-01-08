@@ -98,6 +98,7 @@ p {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-right: 40px;
 }
 
 #pagination {
@@ -131,6 +132,18 @@ p {
 .page:hover, .filter-option:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+#details {
+  background-color: #d1bfa7;
+  float: right;
+  height: 100vh;
+}
+
+#bookTitle {
+  font-family: 'EB Garamond', serif;
+  /* font-weight: 400i; */
+  color: #49494b;
 }
 
 
