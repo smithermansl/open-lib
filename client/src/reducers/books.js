@@ -1,4 +1,5 @@
 import { filterGenre, filterLanguage, filterSubject, totalFilter } from '../../../utilities/filterFunctions'
+import Axios from 'axios';
 
 const initialState = {
   list: [],
@@ -34,15 +35,26 @@ export const addLangFilter = lang => ({
   lang
 })
 
+export const addSubjectFilter = sub => ({
+  type: ADD_SUBJ_FILTER,
+  sub
+})
+
+export const removeGenreFilter = genre => ({
+  type: REMOVE_GEN_FILTER,
+  genre
+})
+
 export const removeLangFilter = lang => ({
   type: REMOVE_LANG_FILTER,
   lang
 })
 
-export const addSubjectFilter = subject => ({
-  type: ADD_SUBJ_FILTER,
-  subject
+export const removeSubjectFilter = sub => ({
+  type: REMOVE_SUBJ_FILTER,
+  sub
 })
+
 
 export const fetchBooks = queryStr => {
   return async (dispatch, getState, axios) => {
@@ -79,17 +91,30 @@ const reducer = (state = initialState, action) => {
     case ADD_SUBJ_FILTER:
       return {...state,
         filters: {...state.filters,
-          subject: [...state.filters.subject, action.subject]
+          subject: [...state.filters.subject, action.sub]
         },
-        filteredList: state.filteredList.filter(book => filterSubject(book, action.subject))
+        filteredList: state.filteredList.filter(book => filterSubject(book, action.sub))
+      }
+
+    case REMOVE_GEN_FILTER:
+      let filteredGenres = state.filters.genre.filter(gen => gen !== action.genre)
+      return {...state,
+        filters: {...state.filters, genre: filteredGenres },
+        filteredList: state.list.filter(book => totalFilter(book, {...state.filters, genre: filteredGenres }))
       }
 
     case REMOVE_LANG_FILTER:
+      let filteredLangs = state.filters.language.filter(lang => lang !== action.lang)
       return {...state,
-        filters: {...state.filters,
-          language: state.filters.language.filter(lang => lang !== action.lang)
-        },
-        filteredList: state.list.filter(book => totalFilter(book, state.filters))
+        filters: {...state.filters, language: filteredLangs },
+        filteredList: state.list.filter(book => totalFilter(book, {...state.filters, language: filteredLangs }))
+      }
+
+    case REMOVE_SUBJ_FILTER:
+      let filteredSubs = state.filters.subject.filter(sub => sub !== action.sub)
+      return {...state,
+        filters: {...state.filters, subject: filteredSubs },
+        filteredList: state.list.filter(book => totalFilter(book, {...state.filters, subject: filteredSubs }))
       }
 
     default:

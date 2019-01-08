@@ -10,8 +10,10 @@ export const filterSubject = (book, subject) => {
   return book.subject && book.subject.indexOf(subject) > -1
 }
 
-export const totalFilter = (book, filters) => {
-  return filters.language.forEach(language => book.language &&book.language.indexOf(language) > -1)
-  // && filters.subject.forEach(subj => book.subject && book.subject.indexOf(subj) > -1)
-  // && filters.genre.forEach(genre => book.subject && book.subject.indexOf(genre) > -1)
+export const totalFilter = (book, allFilters) => {
+  const filters = Object.keys(allFilters)
+
+  return filters.every(filter => {
+    return allFilters[filter].every(fil => book[filter] && book[filter].indexOf(fil) >= 0)
+  })
 }
