@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addGenreFilter, addLangFilter, addSubjectFilter, removeLangFilter } from '../reducers/books'
+import { addGenreFilter, addLangFilter, addSubjectFilter, removeGenreFilter, removeLangFilter, removeSubjectFilter } from '../reducers/books'
 
 class FilterCategory extends Component {
   constructor (props) {
@@ -8,19 +8,16 @@ class FilterCategory extends Component {
   }
 
   changeFilter = e => {
-    console.log('change filter fired')
     e.preventDefault()
     let value = e.target.id
-    const { addGenreFilter, addLangFilter, addSubjectFilter, category, filters, removeLangFilter } = this.props, name = category.name
-
-    console.log('name: ', name, 'value: ', value)
+    const { addGenreFilter, addLangFilter, addSubjectFilter, category, filters, removeGenreFilter, removeLangFilter, removeSubjectFilter } = this.props
+    const { name } = category
 
     switch (name) {
       case 'Genre':
         if (filters.genre.indexOf(value) === -1) {
           addGenreFilter(value)
-        }
-        // else remove genre filter
+        } else removeGenreFilter(value)
         break;
 
       case 'Language':
@@ -32,8 +29,7 @@ class FilterCategory extends Component {
       case 'Subject':
         if (filters.subject.indexOf(value) === -1) {
           addSubjectFilter(value)
-        }
-        // else remove subject filter
+        } else removeSubjectFilter(value)
         break;
     }
   }
@@ -71,7 +67,9 @@ const mapDispatch = dispatch => ({
   addGenreFilter: genre => dispatch(addGenreFilter(genre)),
   addLangFilter: lang => dispatch(addLangFilter(lang)),
   addSubjectFilter: subject => dispatch(addSubjectFilter(subject)),
-  removeLangFilter: lang => dispatch(removeLangFilter(lang))
+  removeGenreFilter: genre => dispatch(removeGenreFilter(genre)),
+  removeLangFilter: lang => dispatch(removeLangFilter(lang)),
+  removeSubjectFilter: sub => dispatch(removeSubjectFilter(sub))
 })
 
 export default connect(mapState, mapDispatch)(FilterCategory)
