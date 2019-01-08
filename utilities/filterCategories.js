@@ -1,10 +1,65 @@
 const categories = [{
-  name: 'Type',
+  name: 'Genre',
   options: [{
-    name: 'eBook',
-    value: 'ebook'
+    name: 'Children',
+    value: 'Children'
+  }, {
+    name: 'Drama',
+    value: 'Drama'
+  }, {
+    name: 'Fantasy',
+    value: 'Fantasy'
+  }, {
+    name: 'Fiction',
+    value: 'Fiction'
+  }, {
+    name: 'History',
+    value: 'History'
+  }, {
+    name: 'Mystery',
+    value: 'Mystery'
+  }, {
+    name: 'Nonfiction',
+    value: 'Nonfiction'
+  }, {
+    name: 'Poetry',
+    value: 'Poetry'
+  }, {
+    name: 'Romance',
+    value: 'Romance'
+  }, {
+    name: 'Science Fiction',
+    value: 'Science Fiction'
   }]
 }, {
+  name: 'Subject',
+  options: [{
+    name: 'Building',
+    value: 'Building'
+  }, {
+    name: 'Business',
+    value: 'Business'
+  }, {
+    name: 'Civilization',
+    value: 'Civilization'
+  }, {
+    name: 'Education',
+    value: 'Education'
+  }, {
+    name: 'Justice',
+    value: 'Justice'
+  }, {
+    name: 'Politics',
+    value: 'Politics'
+  }, {
+    name: 'Racism',
+    value: 'Racism'
+  }, {
+    name: 'Women',
+    value: 'Women'
+  }]
+},
+{
   name: 'Language',
   options: [{
     name: 'French',
@@ -21,20 +76,13 @@ const categories = [{
   }, {
     name: 'Japanese',
     value: 'jpn'
-  }]
-}, {
-  name: 'Genre',
-  options: [{
-    name: 'Fantasy',
-    value: 'fantasy'
   }, {
-    name: 'Fiction',
-    value: 'fiction'
+    name: 'Spanish',
+    value: 'spa'
   }, {
-    name: 'Non Fiction',
-    value: 'non fiction'
+    name: 'Chinese',
+    value: 'chi'
   }]
 }]
 
 export default categories
-// module.exports = categories
