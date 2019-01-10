@@ -233,6 +233,11 @@ p {
 }
 
 @media screen and (max-width: 500px) {
+  #main {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   #title {
     width: unset;
   }
@@ -241,10 +246,18 @@ p {
     display: none;
   }
 
+  #details {
+    order: 1;
+    width: 100%;
+    flex: 0 0 100%;
+  }
+
   #results {
     width: 100vw;
     margin: unset;
     justify-content: space-around;
+    order: 2;
+    flex: 1;
   }
 
   .loading {
