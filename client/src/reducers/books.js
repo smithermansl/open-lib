@@ -10,7 +10,8 @@ const initialState = {
     genre: [],
     subject: [],
     language: []
-  }
+  },
+  details: false
 }
 
 const REQUEST_BOOKS = 'REQUEST_BOOKS'
@@ -93,7 +94,7 @@ export const fetchBooks = queryStr => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_BOOKS:
-      return {...state, isFetching: true, error: false }
+      return {...state, isFetching: true, error: false, details: false }
 
     case GET_BOOKS:
       return {...state,
@@ -107,7 +108,7 @@ const reducer = (state = initialState, action) => {
       return {...state, error: true }
 
     case SELECT_BOOK:
-      return {...state, selectedBook: action.book }
+      return {...state, selectedBook: action.book, details: true }
 
     case ADD_GEN_FILTER:
       return {...state,

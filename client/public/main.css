@@ -256,7 +256,7 @@ p {
 
   #results {
     width: 100vw;
-    margin: unset;
+    margin: 0 auto;
     justify-content: space-around;
     order: 2;
     flex: 1;
