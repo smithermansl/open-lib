@@ -2,7 +2,7 @@
 
 ## Deployed
 
-Visit http://fresh-read.herokuapp.com to check out the deployed site.
+Visit http://fresh-reads.herokuapp.com to check out the deployed site.
 
 ## Local setup
 
@@ -22,4 +22,3 @@ HTML, CSS, React, Redux, Express, Node,
 
 **Author**
 Shelby Smitherman
-smithermansl@gmail.com
