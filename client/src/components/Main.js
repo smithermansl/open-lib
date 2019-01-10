@@ -2,15 +2,21 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import BookDetails from './BookDetails'
 import MainContent from './MainContent'
+import { connect } from 'react-redux'
 
-const Main = () => {
+const Main = props => {
+  const { details } = props
   return (
     <div id="main">
       <Sidebar/>
       <MainContent/>
-      <BookDetails/>
+      { details ? <BookDetails/> : null}
     </div>
   )
 }
 
-export default Main
+const mapState = state => ({
+  details: state.books.details
+})
+
+export default connect(mapState)(Main)
