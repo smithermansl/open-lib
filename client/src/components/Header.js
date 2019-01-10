@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchBooks } from '../reducers/books'
 
-class Header extends Component {
+export class Header extends Component {
   constructor () {
     super ()
     this.state = {
       query: '',
       searchBy: ''
     }
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   handleChange = e => {
@@ -18,7 +19,7 @@ class Header extends Component {
     })
   }
 
-  handleSearch = e => {
+  handleSearch (e) {
     e.preventDefault()
 
     let { query, searchBy } = this.state
@@ -56,7 +57,6 @@ class Header extends Component {
             <option value="">Select search type</option>
             <option value="title">by Title</option>
             <option value="author">by Author</option>
-            <option value="genre">by Genre</option>
           </select>
           <button
             className="search"

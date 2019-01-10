@@ -82,17 +82,33 @@ p {
 
 #sidebar {
   background-color: #d1bfa7;
-  padding: 20px;
+  padding: 40px 0;
   margin-right: 40px;
   float: left;
+  min-width: 140px;
+  min-height: 100vh;
 }
 
-#sidebar h6 {
+#sidebar h6, .drop-down {
   margin: 0;
+  display: inline;
+}
+
+.drop-down {
+  color: #bd8c7d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+
+.drop-down:hover {
+  background-color: #49494b;
+  color: #d1bfa7;
 }
 
 .filter-category {
-  padding: 1em 2em;
+  padding: 0 0 15px 15px;
 }
 
 .filter-option {
@@ -150,21 +166,17 @@ p {
 
 #details {
   width: 400px;
-  height: 500px;
+  height: fit-content;
   background-color: #d1bfa7;
   box-sizing: border-box;
   padding: 40px;
-  margin-top: 40px;
+  margin: 40px 40px 0 0;
   align-content: flex-start;
 }
 
 #details h5 {
-  margin: 0;
+  margin: 15px 0;
   font-weight: normal;
-}
-
-#details img {
-  margin: 30px 0;
 }
 
 #bookTitle {
@@ -194,6 +206,50 @@ p {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 900px) {
+  #header {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #title {
+    margin: 0 auto;
+  }
+
+  #search, #about {
+    display: inline-block;
+  }
+
+  #results {
+    max-width: 400px;
+  }
+
+  #details {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #title {
+    width: unset;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  #results {
+    width: 100vw;
+    margin: unset;
+    justify-content: space-around;
+  }
+
+  .loading {
+    margin: 40px auto;
+  }
 }
 
 /* 
