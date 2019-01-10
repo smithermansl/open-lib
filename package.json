@@ -11,10 +11,11 @@
   },
   "main": "./client/src/index.js",
   "scripts": {
-    "test": "mocha --compilers js:@babel/register --require ./client/tests/helpers.js ./client/tests/*.spec.js",
-    "start": "webpack -p & node server",
+    "postinstall": "webpack -p",
+    "server": "./server/index.js",
+    "start": "node server",
     "start-dev": "NODE_ENV='development' webpack -w & nodemon server",
-    "server": "./server/index.js"
+    "test": "mocha --compilers js:@babel/register --require ./client/tests/helpers.js ./client/tests/*.spec.js"
   },
   "author": "Shelby Smitherman <smithermansl@gmail.com>",
   "license": "ISC",
