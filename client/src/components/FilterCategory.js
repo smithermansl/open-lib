@@ -5,6 +5,9 @@ import { addGenreFilter, addLangFilter, addSubjectFilter, removeGenreFilter, rem
 class FilterCategory extends Component {
   constructor (props) {
     super (props)
+    this.state = {
+      open: false
+    }
   }
 
   changeFilter = e => {
@@ -34,15 +37,27 @@ class FilterCategory extends Component {
     }
   }
 
+  dropDown = e => {
+    e.preventDefault()
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
   render () {
     const { category, filters } = this.props, { name, options } = category
+    const { open } = this.state
     
     return (
       <div className="filter-category">
-        <h6>{name}</h6>
+        <h6>{name} </h6>
+        <button
+          className="drop-down"
+          onClick={this.dropDown}>{ open ? '-' : '+' }
+          </button>
         {
           options && options.map(option => {
-            return (
+            return open ? (
               <p
                 key={option.value}
                 id={option.value}
@@ -51,7 +66,7 @@ class FilterCategory extends Component {
                 onClick={this.changeFilter}>
                 {option.name}
               </p>
-            )
+            ) : null
           })
         }
       </div>
