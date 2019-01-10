@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, '../client/public')))
 
-app.get('*', (req, res, next) => {
+app.use('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'))
 })
 
