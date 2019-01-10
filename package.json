@@ -8,11 +8,11 @@
   },
   "main": "./client/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:@babel/register --require ./client/tests/helpers.js ./client/tests/*.spec.js",
     "start": "webpack -w & nodemon server",
     "server": "nodemon ./server/index.js"
   },
-  "author": "Shelby Smitherman",
+  "author": "Shelby Smitherman <smithermansl@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
@@ -24,7 +24,8 @@
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "webpack": "^4.28.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -33,9 +34,13 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.6",
-    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
 }
